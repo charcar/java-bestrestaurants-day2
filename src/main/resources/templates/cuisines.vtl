@@ -1,0 +1,18 @@
+cuisines.vtl
+
+<h1>$cuisine.getType() Restaurants</h1>
+
+#foreach ($restaurant in $cuisine.getRestaurants())
+<ul>
+  <li><h3>$restaurant.getName()</h3>
+    <a href="/delete/restaurant/$restaurant.getId()">Remove</a>
+
+  </li>
+</ul>
+#end
+
+<ul>
+  <li>
+    <a href="/">Return to main page</a>
+  </li>
+</ul>

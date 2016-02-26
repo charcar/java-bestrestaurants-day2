@@ -1,0 +1,46 @@
+<h3>Come please enter some cuisines and together information about restaurant</h3>
+
+<p>Create a new cuisine:</p>
+
+<form action="/" method="post">
+  <label for="type">Cuisine type</label>
+  <input id="type" name="type" type="text">
+  <button type="submit" class="btn btn-success">Add Cuisine</button>
+</form>
+
+
+<p> Add restaurants to any cuisine:</p>
+
+<form action="/success" method="post">
+
+  <div class="form-group">
+    <label for="cuisineId">Select a Cuisine</label>
+    <select id='cuisineId' name='cuisineId' type='text'>
+    #foreach($cuisine in $cuisines)
+      <option value="$cuisine.getId()">$cuisine.getType()</option>
+    #end
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="name">Restaurant</label>
+    <input id="name" name="name" type="text" class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-info">Add Restaurant</button>
+</form>
+
+#if($cuisines)
+  <p>Click on a cuisine to see its restaurants:</p>
+  <ul>
+    #foreach($cuisine in $cuisines)
+      <li><h3><a href="/cuisines/$cuisine.getId() ">$cuisine.getType()</a></h3>
+        <a href="/delete/cuisine/$cuisine.getId()">Remove</a>
+
+
+      </li>
+    #end
+  </ul>
+#else
+  <p>There are no cuisines yet!</p>
+#end
